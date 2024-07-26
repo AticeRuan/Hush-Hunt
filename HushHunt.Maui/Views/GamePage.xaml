@@ -2,45 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HushHunt.Maui.Views.GamePage"
-             Title="Game" NavigationPage.HasBackButton="True">     
-   
-         
+             Title="Game" NavigationPage.HasBackButton="True" >
+
+
+
+
     <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" x:Name="MainGrid" >
-        <Label Text="Level 1" 
-               Grid.Row="0" 
-                Grid.Column="0"
-                Grid.ColumnSpan="2" 
-                Grid.RowSpan="2" 
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               x:Name="LevelLabel" TextColor="White"></Label>
+ 
 
         <FlexLayout x:Name="ClickableImagesLayout"
                Direction="Row"
                JustifyContent="Start"
                Wrap="Wrap"
                Grid.Row="0" 
-               Grid.Column="2"
-               Grid.ColumnSpan="22" 
+               Grid.Column="0"
+               Grid.ColumnSpan="24" 
                Grid.RowSpan="2"
                ZIndex="100" 
                Margin="1,1,1,1"
-               Padding="1"     
-                   
-               >
+                    Padding="100"
 
-            <Label x:Name="StatusLabel" Text="Game Status" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0" TextColor="White"/>
+            
+                    
+                   
+               >          
+
+            <Label x:Name="StatusLabel" Text="Game Status" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0" />
         </FlexLayout>
-        <Button Text="Restart" 
-        Grid.Row="0" 
-         Grid.Column="17"
-         Grid.ColumnSpan="4" 
-         Grid.RowSpan="2" 
-         
-        HorizontalOptions="Center"
-        VerticalOptions="Center"
-         BackgroundColor="Transparent"
-        x:Name="btnRestart" TextColor="White" Clicked="btnRestart_Clicked" ZIndex="110"></Button>
+        <FlexLayout
+            x:Name="ButtonsLayout"            
+            Grid.Row="0" 
+             Grid.Column="17"
+             Grid.ColumnSpan="4" 
+             Grid.RowSpan="2" 
+             Direction="Row"
+            Wrap="NoWrap"
+            JustifyContent="Start"
+            ZIndex="110" >
+            <Button Text="Hint"           
+                    TextColor="Black"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="Transparent"
+                    x:Name="btnHint"  Clicked="btnHint_Clicked" ZIndex="110" Margin="2,0,0,0"></Button>
+            <Button Text="Restart" 
+     
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                     BackgroundColor="Transparent"
+                     TextColor="Black"
+
+                    x:Name="btnRestart" Clicked="btnRestart_Clicked" ZIndex="110" Margin="2,0,0,0">
+                
+            </Button>
+
+        </FlexLayout>
+    
     </Grid>
 
 </ContentPage>

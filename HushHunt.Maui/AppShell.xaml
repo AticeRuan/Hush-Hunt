@@ -7,6 +7,21 @@
     xmlns:views="clr-namespace:HushHunt.Maui.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="Hush-Hush Hunt">
+<Shell.TitleView>
+  <HorizontalStackLayout VerticalOptions="Fill">
+    <Label
+      Text="Hush-hush Hunt"
+      FontFamily="AbaddonBold"
+       VerticalTextAlignment="Center"
+      VerticalOptions="Center"
+        FontSize="30"
+        Padding="20,0"
+        x:Name="TitleLabel"
+      
+     />
+  </HorizontalStackLayout>
+</Shell.TitleView>
+
 
     <ShellContent
         Title="Home"
