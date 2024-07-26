@@ -26,6 +26,9 @@ namespace HushHunt.Maui
             window.MaximumWidth = newWidth;
             window.MinimumWidth = newWidth;
 
+
+
+
             return window;
         }
     }

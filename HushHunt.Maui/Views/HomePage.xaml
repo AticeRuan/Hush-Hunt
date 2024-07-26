@@ -3,11 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HushHunt.Maui.Views.HomePage"
              Title="Home">
-    <Grid RowDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" ColumnDefinitions="*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*,*" >
-        <Image Source="background1.png"    Grid.Row="0" Grid.Column="0" Grid.RowSpan="20" Grid.ColumnSpan="24" Aspect="AspectFill" />
-        <Image Source="items10.png"    Grid.Row="0" Grid.Column="0"  Aspect="AspectFit"  >
-            <Image.Shadow >
-                <Shadow Brush="red" Radius="40"  Offset="100,100"></Shadow></Image.Shadow>
-        </Image>
-    </Grid>
+    <VerticalStackLayout Padding="100">
+        <Button Text="Start game" Clicked="Button_Clicked" VerticalOptions="Center"/>
+    </VerticalStackLayout>
 </ContentPage>
