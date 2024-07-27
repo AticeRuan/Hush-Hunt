@@ -15,6 +15,8 @@ namespace HushHunt.Maui
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("Abaddon-Bold.ttf", "AbaddonBold");
                     fonts.AddFont("Abaddon-Light.ttf", "AbaddonLight");
+                    fonts.AddFont("Pixeboy.ttf", "Pixeboy");
+                    
                 });
 
 #if DEBUG

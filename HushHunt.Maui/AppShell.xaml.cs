@@ -16,5 +16,9 @@ namespace HushHunt.Maui
             base.OnNavigated(args);
             TitleLabel.Text = Current.CurrentPage.Title;
         }
+        public void UpdateTitle(string title)
+        {
+            TitleLabel.Text = title;
+        }
     }
 }

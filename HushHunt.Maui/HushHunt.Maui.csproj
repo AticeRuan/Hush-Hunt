@@ -59,6 +59,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Abaddon-Bold.ttf" />
 	  <None Remove="Resources\Fonts\Abaddon-Light.ttf" />
+	  <None Remove="Resources\Fonts\Pixeboy.ttf" />
 	  <None Remove="Resources\Images\background1.png" />
 	  <None Remove="Resources\Images\Backgrounds\background1.png" />
 	  <None Remove="Resources\Images\Backgrounds\backgrounds1.png" />

@@ -1,7 +1,4 @@
 
-using Microsoft.Maui.Animations;
-
-
 namespace HushHunt.Maui.Views;
 
 public partial class GamePage : ContentPage
@@ -25,69 +22,82 @@ public partial class GamePage : ContentPage
 
     {
         Random random = new Random();
-        var statusLabel = ClickableImagesLayout.Children.OfType<Label>().FirstOrDefault();
-  
-        var buttonsLayout = MainGrid.Children.OfType<FlexLayout>().FirstOrDefault(flex => flex == ButtonsLayout);
-     
+
         ResetGame();
-
         GenerateBackground();
-
         var gameElement = SetGameElement(levelCount);
         int targetCount = gameElement.targets;
-        int barriersCount = gameElement.barriers;
-      
+        int barriersCount = gameElement.barriers;      
 
-        // Generate 3 unique random positions and images for the main game
+        // Generate  unique random positions and images for the main game
         GenerateUniqueImages(random, targetCount, true);
 
-        // Generate 20 unique random positions and images for the extra images
+        // Generate  unique random positions and images for the extra images
         GenerateUniqueImages(random, barriersCount, false);
 
-        if (statusLabel != null)
-        {
-            ClickableImagesLayout.Children.Add(statusLabel);
-            statusLabel.Text = $"{targetItems.Count} items to seek";
-        }
+ 
      
-        if (buttonsLayout != null)
-        {
-            MainGrid.Children.Add(buttonsLayout);
-        }
-
-        UpdateTitleBasedOnLevel(levelCount);
-
-        SetHintCount();
-
-        btnHint.Text = (HintCount == 1) ? $"{HintCount} Hint" : $"{HintCount} Hints";
-
     }
 
     private void ResetGame()
     {
-        // Clear existing children
-        var flexLayout = MainGrid.Children.OfType<FlexLayout>().FirstOrDefault();
+       
+        //clear items on the grid
+        var images = MainGrid.Children.OfType<Image>().ToList();
 
-        MainGrid.Children.Clear();
+        var flexlayerImages = ClickableImagesLayout.Children.OfType<Image>().ToList();
 
-        ClickableImagesLayout.Children.Clear();
-        usedImageNumbers.Clear();
-        usedPositions.Clear();
-     
 
-        // Re-add FlexLayout to ensure it's on top
-        if (flexLayout != null) 
+        foreach (var image in images)
         {
-            MainGrid.Children.Add(flexLayout);
-            ClickableImagesLayout.BackgroundColor = Color.FromRgba(255,255,255,0.7);
-                };
- 
+            MainGrid.Children.Remove(image);
+        }
+
+        foreach (var image in flexlayerImages)
+        {
+            ClickableImagesLayout.Children.Remove(image);
+        }
+
+
+        
+        LevelIntroFlexLayout.Children.Clear();
+        usedImageNumbers.Clear();
+        usedPositions.Clear();  
+
+       
+
+        ClickableImagesLayout.BackgroundColor = Color.FromRgba(255, 255, 255, 0.7);
+
+        UpdateTitleBasedOnLevel(levelCount);
+        UpdateTitleView($"Level {levelCount}");
+
+        SetHintCount();
+
+        btnHint.Text = (HintCount == 1) ? $"{HintCount} Hint" : $"{HintCount} Hints";
+        rtgIntro.IsVisible = true;
+        SetHintUpdate();
+        IntroLayout.IsVisible = true;
+
+        
+        lblLevel.Text = $"Level {levelCount}";
+
 
     }
+
     public void UpdateTitleBasedOnLevel(int levelCount)
     {
        
         this.Title = $"Level {levelCount}";
+
+       
+    }
+
+    private void UpdateTitleView(string title)
+    {
+        if (Shell.Current is AppShell appShell)
+        {
+            appShell.UpdateTitle(title);
+        }
     }
 
     private void GenerateUniqueImages(Random random, int count, bool isClickable)
@@ -147,7 +157,17 @@ public partial class GamePage : ContentPage
                 };
                 // Add image to the FlexLayout
                 ClickableImagesLayout.Children.Add(flexLayoutImage);
-                
+
+                var introimage = new Image
+                {
+                    Source = image.Source,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Margin = new Thickness(3, 0, 0, 0),
+                    WidthRequest=50
+                };
+                LevelIntroFlexLayout.Children.Add(introimage);
+
 
 
                 // Add click event handler for the grid images
@@ -291,7 +311,7 @@ public partial class GamePage : ContentPage
 
         else
         {
-            DisplayAlert("Oops", "You have used up all Hint! :(", "Ok");
+            DisplayAlert("Oops", "You have used up all Hints! :(", "Ok");
         }
        
     }
@@ -305,5 +325,24 @@ public partial class GamePage : ContentPage
         }
     }
 
+    private void SetHintUpdate()
+    {
+        if (levelCount % 5 == 1)
+        {
+            lblHintUpdate.Text = $"Hint +{5 - HintCount}";
+            lblHintUpdate.IsVisible = true;
+        }
+        else
+        {
+            lblHintUpdate.IsVisible = false;
+        }
+     
+    }
+
+    private void btnIntro_Clicked(object sender, EventArgs e)
+    {
+        rtgIntro.IsVisible = false;
+        IntroLayout.IsVisible = false;
+    }
     
 }
