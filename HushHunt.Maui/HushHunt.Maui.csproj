@@ -61,9 +61,10 @@
 	  <None Remove="Resources\Fonts\Abaddon-Light.ttf" />
 	  <None Remove="Resources\Fonts\Pixeboy.ttf" />
 	  <None Remove="Resources\Images\background1.png" />
-	  <None Remove="Resources\Images\Backgrounds\background1.png" />
-	  <None Remove="Resources\Images\Backgrounds\backgrounds1.png" />
 	  <None Remove="Resources\Images\flexlayout_background.png" />
+	  <None Remove="Resources\Images\heading.png" />
+	  <None Remove="Resources\Images\heading_background.png" />
+	  <None Remove="Resources\Images\main_background.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -82,11 +83,6 @@
 	  <MauiXaml Update="Views\SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Resources\Images\Backgrounds\" />
-	  <Folder Include="Resources\Images\Items\" />
 	</ItemGroup>
 
 </Project>

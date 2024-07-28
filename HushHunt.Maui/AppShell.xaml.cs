@@ -1,5 +1,6 @@
 ﻿using HushHunt.Maui.Views;
 
+
 namespace HushHunt.Maui
 {
     public partial class AppShell : Shell
@@ -10,6 +11,7 @@ namespace HushHunt.Maui
             Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
             Routing.RegisterRoute(nameof(GamePage), typeof(GamePage));
             Routing.RegisterRoute(nameof(SettingsPage), typeof(SettingsPage));
+
         }
         protected override void OnNavigated(ShellNavigatedEventArgs args)
         {
@@ -20,5 +22,7 @@ namespace HushHunt.Maui
         {
             TitleLabel.Text = title;
         }
+
+
     }
 }

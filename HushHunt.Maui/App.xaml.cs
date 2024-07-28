@@ -6,16 +6,19 @@ namespace HushHunt.Maui
         public App()
         {
             InitializeComponent();
+            AppShell appShell = new AppShell();        
+            Shell.SetBackgroundColor(appShell, Color.FromArgb("#c0a42e"));        
+            MainPage = appShell;
 
-            MainPage = new AppShell();
+
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
             var window=base.CreateWindow(activationState);
 
-            const int newWidth = 960;
-            const int newHeight = 540;
+            const int newWidth = 1152;
+            const int newHeight = 648;
 
      
             window.Width = newWidth;
@@ -31,5 +34,9 @@ namespace HushHunt.Maui
 
             return window;
         }
+
+
+
+
     }
 }
