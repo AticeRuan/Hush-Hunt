@@ -1,10 +1,13 @@
+using HushHunt.Maui.ViewModels;
 namespace HushHunt.Maui.Views;
+
 
 public partial class HomePage : ContentPage
 {
 	public HomePage()
 	{
 		InitializeComponent();
+        BindingContext = new HomeViewModel();
 
 
     }
