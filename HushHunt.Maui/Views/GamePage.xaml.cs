@@ -265,11 +265,11 @@ public partial class GamePage : ContentPage
 
     private double SetBackgroundOpacity (int levelCount)
     {
-        if (levelCount <= 5)
+        if (levelCount <= 5 &&levelCount>1)
         {
             return 0.9;
         }
-        else if (levelCount <= 10)
+        else if (levelCount <= 10 && levelCount>5)
         {
             return 0.95;
         }

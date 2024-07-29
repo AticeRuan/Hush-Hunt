@@ -23,7 +23,7 @@
                Padding="100"      
                >
 
-            <Label  Text="Items to seek:" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0" x:Name="StatusLabel" />            
+            <Label  Text="Items to seek:" HorizontalOptions="Center" VerticalOptions="Center" Margin="5,0,0,0" x:Name="StatusLabel" TextColor="Black" />            
         </FlexLayout>
         <FlexLayout
             x:Name="ButtonsLayout"            
@@ -68,7 +68,7 @@
                         >
                 
             </FlexLayout>
-            <Button x:Name="btnIntro" Text="OK" BackgroundColor="Transparent" FontSize="25" Clicked="btnIntro_Clicked"></Button>
+            <Button x:Name="btnIntro" Text="OK" BackgroundColor="Transparent" FontSize="25" Clicked="btnIntro_Clicked" TextColor="White"></Button>
 
             </VerticalStackLayout>
 
