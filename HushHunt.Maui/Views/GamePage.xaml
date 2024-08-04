@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HushHunt.Maui.Views.GamePage"
+             xmlns:vm="clr-namespace:HushHunt.Maui.ViewModels"
              Title="Game" NavigationPage.HasBackButton="True" 
              BackgroundColor="#c0a42e">
-
+    <ContentPage.BindingContext>
+        <vm:GameViewModel />
+    </ContentPage.BindingContext>
 
     <Frame Margin="10" CornerRadius="10" BackgroundColor="White" >
         
@@ -35,20 +38,20 @@
             Wrap="NoWrap"
             JustifyContent="Start"
             ZIndex="110" >
-            <Button Text="Hint"           
+                <Button Clicked="btnHint_Clicked"
                     TextColor="Black"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     BackgroundColor="Transparent"
-                    x:Name="btnHint"  Clicked="btnHint_Clicked" ZIndex="110" Margin="2,0,0,0"></Button>
+                    x:Name="btnHint"  ZIndex="110" Margin="2,0,0,0"></Button>
             <Button Text="Restart" 
-     
+                    Clicked="btnRestart_Clicked"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                      BackgroundColor="Transparent"
                      TextColor="Black"
 
-                    x:Name="btnRestart" Clicked="btnRestart_Clicked" ZIndex="110" Margin="2,0,0,0">
+                    x:Name="btnRestart"  ZIndex="110" Margin="2,0,0,0">
                 
             </Button>
 
@@ -57,7 +60,7 @@
             
         </Rectangle>
 
-        <VerticalStackLayout  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="24" Grid.RowSpan="20" ZIndex="201" Padding="30,100,30,40" x:Name="IntroLayout" >
+            <VerticalStackLayout  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="24" Grid.RowSpan="20" ZIndex="201" Padding="30,100,30,40" x:Name="IntroLayout" IsVisible="{Binding IsIntroVisible}" >
                 <Label x:Name="lblLevel" Text="Level 1" TextColor="White" FontFamily="Pixeboy" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"></Label>
             <Label x:Name="lblHintUpdate" Text="Hint+5" TextColor="White" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,10" IsVisible="False"></Label>
             <Label x:Name="lblIntro" Text="You are to find" TextColor="White"  FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"></Label>
@@ -68,7 +71,7 @@
                         >
                 
             </FlexLayout>
-            <Button x:Name="btnIntro" Text="OK" BackgroundColor="Transparent" FontSize="25" Clicked="btnIntro_Clicked" TextColor="White"></Button>
+                <Button x:Name="btnIntro" Clicked="btnIntro_Clicked" Text="Go" BackgroundColor="Transparent" FontSize="25" Command="{Binding HideIntro}" TextColor="White"></Button>
 
             </VerticalStackLayout>
 
