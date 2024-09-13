@@ -1,5 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 
+
+using Plugin.Maui.Audio;
+using HushHunt.Maui.Views;
+
+
+
 namespace HushHunt.Maui
 {
     public static class MauiProgram
@@ -19,10 +25,16 @@ namespace HushHunt.Maui
                     
                 });
 
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+            builder.Services.AddSingleton(AudioManager.Current);
+            builder.Services.AddTransient<GamePage>();
+            builder.Services.AddTransient<HomePage>();
+            builder.Services.AddTransient<GamePage>();
+            builder.Services.AddTransient<AppShell>();
 
+#if DEBUG
+            builder.Logging.AddDebug();
+#endif
+            
             return builder.Build();
         }
     }

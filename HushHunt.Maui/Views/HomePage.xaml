@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HushHunt.Maui.Views.HomePage"
              xmlns:vm="clr-namespace:HushHunt.Maui.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="vm:HomeViewModel"
              Title=""
           Shell.BackgroundColor="#c0a42e"  
@@ -12,8 +13,23 @@
 
             <VerticalStackLayout   WidthRequest="400" HeightRequest="200" Padding="0,150,0,0">
 
-            <Button Text="Start" Command="{Binding StartButtonCommand}"   VerticalOptions="Center" FontFamily="AbaddonBold" FontSize="40" WidthRequest="400" BackgroundColor="Transparent" FontAutoScalingEnabled="True" TranslationX="-30" TextColor="White"/>
+            <Button Text="Start" 
+                    Command="{Binding StartButtonCommand}"   
+                    VerticalOptions="Center" 
+                    FontFamily="AbaddonBold" 
+                    FontSize="40" 
+                    WidthRequest="400" 
+                    BackgroundColor="Transparent" 
+                    FontAutoScalingEnabled="True" 
+                    TranslationX="-30" 
+                    TextColor="White" 
+                    x:Name="StartButton">
+                <Button.GestureRecognizers>
+                    <PointerGestureRecognizer PointerEntered="OnPointerEntered" PointerExited="OnPointerExited" />
+                </Button.GestureRecognizers>
+            </Button>
             </VerticalStackLayout>
+
 
     </Grid>
 </ContentPage>

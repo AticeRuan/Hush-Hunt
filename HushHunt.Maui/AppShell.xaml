@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:HushHunt.Maui"
     xmlns:views="clr-namespace:HushHunt.Maui.Views"
+    xmlns:vm="clr-namespace:HushHunt.Maui.ViewModels"
     Shell.FlyoutBehavior="Disabled"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="Hush-Hush Hunt"  >
     
 <Shell.TitleView>
@@ -21,13 +23,45 @@
         x:Name="TitleLabel"
       
      />
-  </HorizontalStackLayout>
-</Shell.TitleView>
+          
+
+        </HorizontalStackLayout>
+     </Shell.TitleView>
+    <Shell.ToolbarItems>
+        <ToolbarItem         
+            IconImageSource="home_icon.png"
+            Order="Primary"
+            Priority="0"           
+
+            Command="{Binding BackToHomeCommand}" />
+        <ToolbarItem  
+            IconImageSource="music_icon.png"
+            Order="Primary"
+            Priority="0"
+            Clicked="musicButton_Clicked"
+            x:Name="musicButton"/>
+        <ToolbarItem  
+        IconImageSource="sound_icon.png"
+         Order="Primary"
+         Priority="0"
+         Clicked="Sound_Clicked"
+         x:Name="soundButton"/>
+
+        <ToolbarItem         
+            IconImageSource="info_icon.png"
+            Order="Primary"
+            Priority="0"           
+            
+            Command="{Binding OpenInfoCommand}" />
+
+
+    </Shell.ToolbarItems>
 
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:HomePage}"
         Route="HomePage" />
+
 
 </Shell>

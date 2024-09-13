@@ -39,29 +39,51 @@
             JustifyContent="Start"
             ZIndex="110" >
                 <Button Clicked="btnHint_Clicked"
-                    TextColor="Black"
+                     TextColor="DarkSlateGrey"
+                     FontFamily="Pixeboy"
+                    FontSize="20"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     BackgroundColor="Transparent"
-                    x:Name="btnHint"  ZIndex="110" Margin="2,0,0,0"></Button>
-            <Button Text="Restart" 
+                    x:Name="btnHint"  ZIndex="110" Margin="2,0,0,0">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered_1"/>
+                    </Button.GestureRecognizers>
+                </Button>
+
+           
+                <Button Text="Restart" 
                     Clicked="btnRestart_Clicked"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                      BackgroundColor="Transparent"
-                     TextColor="Black"
+                     TextColor="DarkSlateGrey"
+                     FontFamily="Pixeboy"
+                    FontSize="20"
 
                     x:Name="btnRestart"  ZIndex="110" Margin="2,0,0,0">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
+                    </Button.GestureRecognizers>
                 
             </Button>
+                <Label x:Name="timerLabel"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    FontSize="24"
+                    TextColor="DarkSlateGrey"                   
+                    Text="00:00" 
+                    ZIndex="110" 
+                    Margin="2,0,0,2"
+                        />
 
-        </FlexLayout>
+            </FlexLayout>
         <Rectangle BackgroundColor="Black" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="24" Grid.RowSpan="20" ZIndex="200" Opacity="0.85" x:Name="rtgIntro" >
             
         </Rectangle>
 
             <VerticalStackLayout  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="24" Grid.RowSpan="20" ZIndex="201" Padding="30,100,30,40" x:Name="IntroLayout" IsVisible="{Binding IsIntroVisible}" >
-                <Label x:Name="lblLevel" Text="Level 1" TextColor="White" FontFamily="Pixeboy" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+             <Label x:Name="lblLevel" Text="Level 1" TextColor="White" FontFamily="Pixeboy" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center"></Label>
             <Label x:Name="lblHintUpdate" Text="Hint+5" TextColor="White" FontSize="15" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,0,0,10" IsVisible="False"></Label>
             <Label x:Name="lblIntro" Text="You are to find" TextColor="White"  FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"></Label>
             <FlexLayout x:Name="LevelIntroFlexLayout"
@@ -71,8 +93,18 @@
                         >
                 
             </FlexLayout>
-                <Button x:Name="btnIntro" Clicked="btnIntro_Clicked" Text="Go" BackgroundColor="Transparent" FontSize="25" Command="{Binding HideIntro}" TextColor="White"></Button>
+                <Button x:Name="btnIntro" Clicked="btnIntro_Clicked" Text="Go" BackgroundColor="Transparent" FontSize="25" Command="{Binding HideIntro}" TextColor="White">
+                    <Button.GestureRecognizers>
+                        <PointerGestureRecognizer PointerEntered="btnIntro_PointerEntered" PointerExited="btnIntro_PointerExited" />
+                    </Button.GestureRecognizers>
+                </Button>
 
+            </VerticalStackLayout>
+
+            <VerticalStackLayout  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="24" Grid.RowSpan="20" ZIndex="201" Padding="30,100,30,40" x:Name="endGameLayout" IsVisible="False" >
+                <Label Text="Time is up !!" x:Name="timeOutLabel" TextColor="White" FontFamily="Pixeboy" HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" Margin="0,20,0,0"/>
+                <Label Text="Game over" x:Name="endGameLabel" TextColor="White" FontFamily="Pixeboy" HorizontalOptions="Center" VerticalOptions="Center" FontSize="70" IsVisible="False"/>
+                <Button Text="Restart" FontSize="30" WidthRequest="300" BackgroundColor="Transparent" FontAttributes="Bold" Clicked="btnRestart_Clicked" IsVisible="False" x:Name="Restart_button"></Button>
             </VerticalStackLayout>
 
         </Grid>

@@ -1,19 +1,37 @@
+
+using HushHunt.Maui.Models;
 using HushHunt.Maui.ViewModels;
+using Plugin.Maui.Audio;
 namespace HushHunt.Maui.Views;
 
 
 public partial class HomePage : ContentPage
 {
-	public HomePage()
+
+
+
+    public HomePage(IAudioManager audioManager)
 	{
 		InitializeComponent();
         BindingContext = new HomeViewModel();
 
-
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+
+    private async void OnPointerEntered(object sender, PointerEventArgs e)
     {
-		Shell.Current.GoToAsync(nameof(GamePage));
+        await StartButton.ScaleTo(1.2,200);
+        SoundManager.Instance.PlaySound("swoosh.mp3");
+        await StartButton.ScaleTo(1, 200);
+      
+
     }
+
+    private void OnPointerExited(object sender, PointerEventArgs e)
+    {
+        StartButton.Scale = 1.0; 
+    }
+
+
+
 }
