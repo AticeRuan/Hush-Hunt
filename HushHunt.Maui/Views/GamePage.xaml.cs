@@ -25,7 +25,7 @@ public partial class GamePage : ContentPage
     {
         InitializeComponent();
         
-        _timerManager = new TimerManager(TimeSpan.FromSeconds(90));
+        _timerManager = new TimerManager(TimeSpan.FromSeconds(92));
         GenerateGame();
 
 
@@ -64,6 +64,7 @@ public partial class GamePage : ContentPage
     }
     private async void EndGame()
     {
+        _timerManager.Stop();
         _isGameActive = false;
         endGameLayout.IsVisible = true;
         rtgIntro.IsVisible = true;
@@ -128,7 +129,7 @@ public partial class GamePage : ContentPage
 
         SetHintUpdate(levelCount);
 
-        _timerManager.Reset();
+        //_timerManager.Reset();
         _isGameActive = false;
     }
     #endregion
@@ -328,7 +329,7 @@ public partial class GamePage : ContentPage
             }
             else
                 levelCount = 1;
-
+            _timerManager.Stop();
             GenerateGame();
         }
         else
@@ -446,15 +447,14 @@ public partial class GamePage : ContentPage
 
     private void StartTimer()
     {
-        Debug.WriteLine("Starting timer...");
+     
         _isGameActive = true;
-        _timerManager.Stop();
         _timerManager.Reset();
         _timerManager.Start();
 
         Dispatcher.StartTimer(TimeSpan.FromSeconds(1), () =>
         {
-            Debug.WriteLine("Timer tick");
+        
 
             MainThread.BeginInvokeOnMainThread(() =>
             {
